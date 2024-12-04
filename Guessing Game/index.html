@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>GuessGo</title>
+  </head>
+  <body>
+    <div id="main_container">
+      <div id="menu_container">
+        <button id="back_btn" onclick="window.location.href='../index.html'">
+          <img src="assets/images/icons/arrowBack.svg" class="icon_back" />
+        </button>
+      </div>
+
+      <div id="home_container">
+        <div class="main_home_container">
+          <!--ARI DIRI-->
+          <div class="wrapper" id="wrappers" style="display: none">
+            <div id="ttest"></div>
+
+            <div class="hint-ref"></div>
+            <div id="user-input-section"></div>
+            <div id="message"></div>
+            <div id="letter-container"></div>
+            <span id="note-design">NOTE: underscore as space</span>
+          </div>
+
+          <div class="controls-container" id="controls-containers">
+            <button id="start">
+              <img
+                src="Assets/Images/Icons/gStarts2.png"
+                class="icon_Game"
+                alt="start"
+              />
+            </button>
+            <div id="result"></div>
+            <div id="word"></div>
+            <!-- <button id="start">Start</button> -->
+            <button
+              id="diff-design"
+              style="background-color: #16a34a; color: white"
+            >
+              Easy
+            </button>
+          </div>
+
+          <div id="difficulty-modal" class="modal">
+            <div class="modal-content">
+              <h2>Select Difficulty:</h2>
+              <button
+                onclick="Easy(1)"
+                class="btn-difficulty"
+                style="background-color: #16a34a"
+              >
+                Easy
+              </button>
+              <button
+                onclick="Normal(2)"
+                class="btn-difficulty"
+                style="background-color: #fa4032"
+              >
+                Hard
+              </button>
+              <!-- <button class="btn btn-difficulty" data-difficulty="Hard">Hard</button>
+                      <button class="btn btn-difficulty" data-difficulty="Extreme">
+                        Extreme
+                      </button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
