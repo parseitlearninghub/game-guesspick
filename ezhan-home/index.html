@@ -1,58 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homepage</title>
     <link rel="stylesheet" href="gameHomepage.css" />
-    
-</head>
-<body>
+  </head>
+  <body>
     <div id="main_container">
-      
-        <div id="menu_container">
-            
-            
-            
-        </div>
-        
-        <div id="home_container">
-            
-            
-          <div class="main_home_container">
-            <!--ARI DIRI START-->
-            
-            <div id="container_game">
-            
-            <div id="hanneEzragame">
+      <div id="menu_container"></div>
 
-                <img src="assets/images/icons/question.png" class="icon_main">
-            
-                <div class="hanEzchoice">
+      <div id="home_container">
+        <div class="main_home_container">
+          <!--ARI DIRI START-->
+
+          <div id="container_game">
+            <div id="hanneEzragame">
+              <img src="Assets/Images/Icons/question.png" class="icon_main" />
+
+              <div class="hanEzchoice">
                 <button class="choiceGame" onclick="choiceTest('red')">
-                <img src="assets/images/icons/guess.png" class="icon_Game">
-                <span class="mgawords">GuessGo</span>
+                  <img src="Assets/Images/Icons/guess.png" class="icon_Game" />
+                  <span class="mgawords">GuessGo</span>
                 </button>
-                </div>
-                
-                <div class="hanEzchoice">
+              </div>
+
+              <div class="hanEzchoice">
                 <!-- <input type="radio" id="ezra" name="game1" onclick="choiceTest('green')"> -->
                 <button class="choiceGame" onclick="choiceTest('green')">
-                    <img src="assets/images/icons/pick4.png" class="icon_Game">
-                <span class="mgawords">Lingo Pick</span>
+                  <img src="Assets/Images/Icons/pick4.png" class="icon_Game" />
+                  <span class="mgawords">Lingo Pick</span>
                 </button>
-                </div>
+              </div>
 
-                <button id="join_btn" onclick="window.location.href='#'">Home</button>
-                
-            </div>
-          
+              <button id="join_btn" onclick="window.location.href='https://parseitlearninghub.github.io/parsers/'">
+                Home
+              </button>
             </div>
           </div>
-           <!-- BASIN ARI DIRI END -->
         </div>
+        <!-- BASIN ARI DIRI END -->
+      </div>
     </div>
     <script src="gameHomepage.js"></script>
-</body>
-
+  </body>
 </html>

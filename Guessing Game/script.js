@@ -1,10 +1,3 @@
-// document.addEventListener(
-//     "touchmove",
-//     (e) => {
-//       e.preventDefault(); // Prevent scrolling or zooming
-//     },
-//     { passive: false }
-//   );
 //Initial References
 const message = document.getElementById("message");
 const hintRef = document.querySelector(".hint-ref");

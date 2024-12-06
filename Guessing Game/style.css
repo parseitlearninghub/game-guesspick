@@ -92,6 +92,7 @@ html, body{
     max-width: 600px;
     margin: 30px auto 0;
     padding: 30px;
+    height: 100%;
 }
 .controls-container {
     /* background-color: #7786f7;
@@ -129,6 +130,7 @@ html, body{
     gap: 0.8cm 0.4cm;
     justify-content: center;
     margin-top: 2em;
+    background-color: transparent;
 }
 #letter-container button {
     background-color: #ffffff;
