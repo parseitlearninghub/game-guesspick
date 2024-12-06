@@ -12,17 +12,13 @@
 }
 
 
-html, body{
+body{
     margin: 0;
     padding: 0;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; */
     background-color: transparent;
     height: 100%;
     overflow-x: hidden;
-    /* box-sizing: border-box; */
+    overflow-y: scroll;
 }
 #main_container{
     /* margin: 0;
