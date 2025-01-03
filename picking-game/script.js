@@ -95,81 +95,92 @@ const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
 
-let currentQuestionIndex= 0;
-let score= 0;
+let currentQuestionIndex = 0;
+let score = 0;
+let shuffledQuestions;
 
-function startQUIZ(){
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function startQUIZ() {
     currentQuestionIndex = 0;
-    score =0;
-    nextButton.innerHTML="Next";
+    score = 0;
+    nextButton.innerHTML = "Next";
+    shuffledQuestions = shuffle([...question]); // Shuffle the questions
     showQuestion();
 }
 
-function showQuestion(){
+function showQuestion() {
     resetState();
-    let currentQuestion = question[currentQuestionIndex];
+    let currentQuestion = shuffledQuestions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
-    questionElement.innerHTML = questionNo + "." + currentQuestion.question;
+    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
 
-    currentQuestion.answer.forEach(answer => {
+    let shuffledAnswers = shuffle([...currentQuestion.answer]); // Shuffle the answers
+    shuffledAnswers.forEach(answer => {
         const button = document.createElement("button");
         button.innerHTML = answer.text;
         button.classList.add("btn");
         answerButtons.appendChild(button);
-        if(answer.correct){
+        if (answer.correct) {
             button.dataset.correct = answer.correct;
         }
         button.addEventListener("click", selectAnswer);
     });
 }
-function resetState(){
+
+function resetState() {
     nextButton.style.display = "none";
-    while (answerButtons.firstChild){
+    while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
     }
 }
 
-function selectAnswer(e){
+function selectAnswer(e) {
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
-    if(isCorrect){
+    if (isCorrect) {
         selectedBtn.classList.add("correct");
         score++;
-    }else{
+    } else {
         selectedBtn.classList.add("incorrect");
     }
     Array.from(answerButtons.children).forEach(button => {
-        if(button.dataset.correct === "true"){
+        if (button.dataset.correct === "true") {
             button.classList.add("correct");
         }
         button.disabled = true;
     });
     nextButton.style.display = "block";
-
 }
-function showScore(){
+
+function showScore() {
     resetState();
-    questionElement.innerHTML = `You Scored ${score} out of ${question.length}!`;
+    questionElement.innerHTML = `You Scored ${score} out of ${shuffledQuestions.length}!`;
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
 }
 
-function handleNextButton(){
+function handleNextButton() {
     currentQuestionIndex++;
-    if(currentQuestionIndex < question.length){
+    if (currentQuestionIndex < shuffledQuestions.length) {
         showQuestion();
-    }else{
+    } else {
         showScore();
     }
 }
-nextButton.addEventListener("click", ()=>{
-    if(currentQuestionIndex < question.length){
+
+nextButton.addEventListener("click", () => {
+    if (currentQuestionIndex < shuffledQuestions.length) {
         handleNextButton();
-
-    }else{
+    } else {
         startQUIZ();
-
     }
-})
+});
 
 startQUIZ();
