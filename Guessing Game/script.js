@@ -11,7 +11,7 @@ const onWrappers = document.getElementById("wrappers");
 const onControl = document.getElementById("controls-containers");
 const onOutput = document.getElementById("ttest");
 const noteDesign = document.getElementById("note-design");
-let randomWord= "",
+let randomWord = "",
     randomHint = "";
 let winCount = 0,
     lossCount = 0;
@@ -19,26 +19,26 @@ const difficultyBtn = document.getElementById("diff-design");
 const modal = document.getElementById("difficulty-modal");
 difficultyBtn.addEventListener("click", function () {
     modal.style.display = "block";
-  });
+});
 
-  window.addEventListener("click", function (event) {
+window.addEventListener("click", function (event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
-  });
+});
 //Word and Hints Object
 const options = {
-python: "Build websites and software automate tasks, and conduct data analysis.",
-java: "Used to develop mobile apps, web apps, desktop apps, games and much more.",
-xamarin: "Building many different types of applications.",
-html: "HyperText Markup Language",
-css: "Cascading Style Sheets",
-binary: "A number system where a number us represented bu using only two digits (0 and 1).",
-programming: "The process or activity of writing computer programs.",
-bsit: "Bachelor of Science in Information Technology",
-firebase: "Is a realtime database.",
-firewall: "A network security device that prevents unauthorized access to a network.",
-wifi: "A wireless networking technology that uses radio waves to provide wireless high-speed internet access.",
+    python: "Build websites and software automate tasks, and conduct data analysis.",
+    java: "Used to develop mobile apps, web apps, desktop apps, games and much more.",
+    xamarin: "Building many different types of applications.",
+    html: "HyperText Markup Language",
+    css: "Cascading Style Sheets",
+    binary: "A number system where a number us represented bu using only two digits (0 and 1).",
+    programming: "The process or activity of writing computer programs.",
+    bsit: "Bachelor of Science in Information Technology",
+    firebase: "Is a realtime database.",
+    firewall: "A network security device that prevents unauthorized access to a network.",
+    wifi: "A wireless networking technology that uses radio waves to provide wireless high-speed internet access.",
 };
 const options2 = {
     Iujotm_oy_lat: "Coding is fun <br> Shift:6",
@@ -91,7 +91,6 @@ const generateRandomValue = (array) => Math.floor(Math.random() * array.length);
 //Block all the buttons
 const blocker = () => {
     let lettersButtons = document.querySelectorAll(".letters");
-
     stopGame();
 };
 
@@ -118,9 +117,9 @@ const generateWord = () => {
     randomWord = words[generateRandomValue(words)];
     randomHint = choosenDifficulty[randomWord];
     hintRef.innerHTML = `<div id="wordHint">
-    <span>Hint:</span>${randomHint}</div>`;
+    <span>Q: </span>${randomHint}</div>`;
     let displayItem = "";
-    randomWord.split("") .forEach((value) => {
+    randomWord.split("").forEach((value) => {
         displayItem += '<span class="inputSpace">_ </span>';
     });
 
@@ -140,87 +139,87 @@ const init = () => {
     resultText.innerText = "";
     userInpSection.innerHTML = "";
     letterContainer.classList.add("hide");
-    letterContainer.innerHTML ="";
+    letterContainer.innerHTML = "";
     generateWord();
 
     //For creating letter buttons
-for (let i=65; i < 92; i++) {
-    let button = document.createElement("button");
-    button.classList.add("letters");
-    button.innerText = String.fromCharCode(i);
+    for (let i = 65; i < 92; i++) {
+        let button = document.createElement("button");
+        button.classList.add("letters");
+        button.innerText = String.fromCharCode(i);
 
-    //Number to ASCII[A-Z]
-    if (difficulty === 2 && i === 91) {
-        button.innerText = String.fromCharCode(95); // Display "_"
-    } else if (difficulty === 1 && i === 91) {
-        return // Display other characters
-    }
-    
+        //Number to ASCII[A-Z]
+        if (difficulty === 2 && i === 91) {
+            button.innerText = String.fromCharCode(95); // Display "_"
+        } else if (difficulty === 1 && i === 91) {
+            return // Display other characters
+        }
 
-    //Character button onclick
-    button.addEventListener("click", () => {
-        message.innerText = `Correct Letter`;
-        message.style.color = "#008000";
-        let charArray = randomWord.toUpperCase().split("");
-        let inputSpace = document.getElementsByClassName("inputSpace");
 
-    //If array contains clicked value replace the matched Dash with Letter
-    if(charArray.includes(button.innerText)){
-        charArray.forEach((char,index) => {
-            //If character in array is same as clicked button
-            if(char === button.innerText){
-                button.classList.add("correct");
-                //Replace dash with letter
-                inputSpace[index].innerText = char;
-                winCount += 1;
-                //if winCount equals word length
-                if(winCount == charArray.length){
-                    let output_Correct = Math.floor(Math.random() * 4) + 1;
-                    console.log(output_Correct);
-                    switch(output_Correct){
-                        case 1:
-                            resultText.innerHTML = "Well done!";
-                            break;
-                        case 2:
-                            resultText.innerHTML = "That's right!";
-                            break;
-                        case 3:
-                            resultText.innerHTML = "Exactly!";
-                            break;
-                        default:
-                            resultText.innerHTML = "Correct!";
+        //Character button onclick
+        button.addEventListener("click", () => {
+            message.innerText = `Correct Letter`;
+            message.style.color = "#008000";
+            let charArray = randomWord.toUpperCase().split("");
+            let inputSpace = document.getElementsByClassName("inputSpace");
+
+            //If array contains clicked value replace the matched Dash with Letter
+            if (charArray.includes(button.innerText)) {
+                charArray.forEach((char, index) => {
+                    //If character in array is same as clicked button
+                    if (char === button.innerText) {
+                        button.classList.add("correct");
+                        //Replace dash with letter
+                        inputSpace[index].innerText = char;
+                        winCount += 1;
+                        //if winCount equals word length
+                        if (winCount == charArray.length) {
+                            let output_Correct = Math.floor(Math.random() * 4) + 1;
+                            console.log(output_Correct);
+                            switch (output_Correct) {
+                                case 1:
+                                    resultText.innerHTML = "Well done!";
+                                    break;
+                                case 2:
+                                    resultText.innerHTML = "That's right!";
+                                    break;
+                                case 3:
+                                    resultText.innerHTML = "Exactly!";
+                                    break;
+                                default:
+                                    resultText.innerHTML = "Correct!";
+                            }
+                            resultText.style.color = "#008000";
+                            startBtn.innerText = "Restart";
+                            //block all buttons
+                            blocker();
+                        }
                     }
-                    resultText.style.color = "#008000";
-                    startBtn.innerText = "Restart";
-                    //block all buttons
+                });
+            }
+            else {
+                //lose count
+                button.classList.add("incorrect");
+                button.style.backgroundColor = "red";
+                button.style.color = "#ffffff";
+                button.style.border = "1px solid red";
+                lossCount -= 1;
+                document.getElementById("chanceCount").innerText = `Chances Left: ${lossCount}`;
+                message.innerText = `Incorrect Letter`;
+                message.style.color = "#ff0000";
+                if (lossCount == 0) {
+                    word.innerHTML = `The word was: <span style="color: #008000; font-size: 22px;"> ${randomWord}</span>`;
+                    resultText.innerHTML = "Wrong Answer";
+                    resultText.style.color = "red";
                     blocker();
                 }
             }
-         });
-    }
-    else{
-        //lose count
-        button.classList.add("incorrect");
-        button.style.backgroundColor = "red";
-        button.style.color = "#ffffff";
-        button.style.border= "1px solid red";
-        lossCount -= 1;
-        document.getElementById("chanceCount").innerText = `Chances Left: ${lossCount}`;
-        message.innerText = `Incorrect Letter`;
-        message.style.color = "#ff0000";
-        if (lossCount == 0){
-            word.innerHTML = `The word was: <span style="color: #008000; font-size: 22px;"> ${randomWord}</span>`;
-            resultText.innerHTML = "Wrong Answer";
-            resultText.style.color = "red";
-            blocker();
-        }
-    }
-    //Disable clicked buttons
-    button.disabled = true;
-    });
+            //Disable clicked buttons
+            button.disabled = true;
+        });
 
-    //Append generated buttons to the letters container
-    letterContainer.appendChild(button);
+        //Append generated buttons to the letters container
+        letterContainer.appendChild(button);
     }
 };
 
